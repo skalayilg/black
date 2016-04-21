@@ -1,0 +1,188 @@
+.buy {
+	background: lightgreen;
+	/* This is a single-line comment */
+	text-align: left;
+	color: black;
+	font-size: large;
+	font-weight: bold;
+	font-family: Arial Black;
+}
+
+.box {
+	font-size: xx-small;
+	border: 1px solid;
+	padding: 1px;
+	background: yellow;
+	border-top-right-radius: 2em;
+	border-bottom-right-radius: 2em;
+	border-top-left-radius: 2em;
+	border-bottom-left-radius: 2em;
+}
+
+.ltp {
+	color: SlateBlue;
+	font-style: italic;
+	font-size: medium;
+	font-weight: normal;
+	font-family: Arial;
+}
+
+.glyphicon-none:before {
+	content: "\2122";
+	color: transparent !important;
+}
+
+.active {
+	background: lightgreen color:red;
+}
+
+.sell {
+	background: IndianRed;
+	/* This is a single-line comment */
+	text-align: left;
+	color: black;
+	font-size: large;
+	font-weight: bold;
+	font-family: Arial Black;
+}
+
+details {
+	background: white;
+	/* This is a single-line comment */
+	text-align: left;
+	color: grey;
+}
+
+.chart {
+	/*display:inline;*/
+	background: grey;
+	/* This is a single-line comment */
+	text-align: left;
+	color: black;
+	left: 30px;
+	padding-left: 20px;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	background-color: black;
+}
+
+.left {
+	margin: 0;
+	padding: 0;
+}
+
+.smenu {
+	display: inline;
+	margin: 0;
+	padding: 0;
+}
+
+#header {
+	background-color: black;
+	color: white;
+	text-align: center;
+	padding: 0px;
+	position: fixed;
+	width: 100%;
+	border: 0;
+	top: 0%;
+	bottom: 65px;
+	padding-bottom: 2px;
+}
+
+#content {
+	position: fixed;
+	top: 67px;
+	bottom: 62px;
+	padding: 2px;
+	/*left: 0;
+    right: 0;*/
+	width: 100%;
+	background-color: grey;
+	overflow: auto;
+	/*top:10%;
+	bottom:10%;*/
+	padding-bottom: 5px;
+}
+
+#bot-buttons {
+	background-color: black;
+	color: white;
+	position: fixed;
+	text-align: center;
+	bottom: 20.5px;
+	width: 100%;
+	padding-bottom: 6px;
+	padding-top: 6px;
+	/*top:90%;
+	bottom:5%;*/
+}
+
+#footer {
+	background-color: black;
+	color: white;
+	position: fixed;
+	text-align: center;
+	/*top:95%;*/
+	bottom: 0;
+	width: 100%;
+}
+
+/*
+
+tab {
+	display:inline;
+}
+
+ul#menu li {
+    display:inline;
+	align:left;
+}
+
+
+.menu ul, .menu li{
+   margin:0;
+   padding:0;
+}
+
+
+.inline{
+display:inline;
+}
+
+#nav {
+    line-height:30px;
+    background-color:#eeeeee;
+    height:300px;
+    width:100px;
+    float:left;
+    padding:5px; 
+}
+#section {
+    width:350px;
+    float:left;
+    padding:10px; 
+}
+
+#midsection {
+    line-height:30px;
+	background-color:black;
+    height:300px;
+    padding:5px; 
+}
+
+
+
+#footer1 {
+    background-color:black;
+    color:white;
+    clear:both;
+    text-align:center;
+    padding:0px; 
+}
+
+
+*/

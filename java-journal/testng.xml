@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite verbose="0" name="Java-Journal-Test-Suite" parallel="false">
+
+	<test name="UnitTests">
+		<classes>
+			<class name="com.sancho.journal.web.model.UserTest" />
+			<class name="com.sancho.journal.web.model.JournalTest" />
+			<class name="com.sancho.journal.web.model.TopicTest" />
+			<class name="com.sancho.journal.web.vo.TopicTest" />
+			<class name="com.sancho.journal.web.vo.JournalTest" />
+		</classes>
+	</test> <!-- UnitTests -->
+
+	<test name="DAOIntegrationTests">
+		<classes>
+			<class name="com.sancho.journal.web.dao.UserRepositoryIT" />
+			<class name="com.sancho.journal.web.dao.TopicRepositoryIT" />
+			<class name="com.sancho.journal.web.dao.JournalRepositoryIT" />
+		</classes>
+	</test><!-- IntegtationTests -->
+
+	<test name="MVCIntegrationTests">
+		<classes>
+			<class name="com.sancho.journal.web.mvc.JournalControllerIT" />
+			<class name="com.sancho.journal.web.mvc.TopicControllerIT" />
+			<class name="com.sancho.journal.web.mvc.JournalServiceIT" />
+			<class name="com.sancho.journal.web.security.JJUserDetailsServiceIT" />
+			<class name="com.sancho.journal.web.security.SecurityIT" />
+		</classes>
+	</test>
+
+
+</suite> <!-- Suite -->

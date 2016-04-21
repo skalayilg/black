@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html ng-app="jj">
+
+
+<head>
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, user-scalable=yes">
+<meta http-equiv="Content-Security-Policy"
+	content="default-src *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval'">
+
+<!-- CSS -->
+<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css" href="css/w3.css">
+<!-- jj -->
+<link rel="stylesheet" type="text/css" href="css/jj.css" />
+
+<!-- scripts for  jquery angular bootstrap -->
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/angular.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+
+
+<!-- load momentJS (required for angular-moment) 
+		<script src="js/moment.min.js"></script>
+        -->
+<!-- load angular-moment 
+		<script src="js/angular-moment.min.js"></script>
+        -->
+<!-- Load jjapp angular scripts -->
+<script type="text/javascript" src="js/jj.js"></script>
+
+
+
+</head>
+<body ng-cloak ng-controller="jjController as jjCtrl">
+	<!--login modal-->
+	<div ng-hide="jjCtrl.status.status == 'loggedin'" id="loginModal"
+		class="modal hide" tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-hidden="true">×</button>
+					<h1 class="text-center">Login</h1>
+				</div>
+				<div class="modal-body">
+					<form action="signin" method="post"
+						class="form col-md-12 center-block">
+						<div class="form-group">
+							<input name="username" type="text" class="form-control input-lg"
+								placeholder="Username">
+						</div>
+						<div class="form-group">
+							<input name="password" type="password"
+								class="form-control input-lg" placeholder="Password">
+						</div>
+						<div class="form-group">
+							<button type="submit" class="btn btn-primary btn-lg btn-block">Sign
+								In</button>
+							<!--
+                      <span class="pull-right"><a href="#">Register</a></span>
+                      <span><a href="#">Need help?</a></span>
+                      -->
+						</div>
+					</form>
+				</div>
+				<div class="modal-footer">
+					<div class="col-md-12 hide">
+						<button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<!-- About Modal -->
+	<div hidden class="modal fade" id="AboutModal" role="dialog">
+		<div class="modal-dialog">
+
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">About</h4>
+				</div>
+				<div class="modal-body">This is a sample application for
+					medical journals</div>
+
+			</div>
+
+		</div>
+	</div>
+
+	<!-- Main -->
+	<div ng-cloak id="main">
+		<!-- HEADER -->
+		<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+
+			<div class="container">
+				<div class="navbar-header">
+					<a class="navbar-brand" href="#"><span
+						class="w3-xxlarge w3-animate-opacity">Medical Journals</span></a>
+
+					<button type="button" class="navbar-toggle" data-toggle="collapse"
+						data-target=".navbar-collapse">
+						<span class="sr-only">Toggle navigation</span> <img class="icon"
+							src="img/Chrysanthemum-35-35.jpg" />
+					</button>
+
+				</div>
+				<div class="navbar-collapse collapse">
+					<ul class="nav navbar-nav navbar-right">
+
+						<li><a href="logout">Log Off</a></li>
+
+						<li class="dropdown"><a href="#" class="dropdown-toggle"
+							data-toggle="dropdown">Subcriber<b class="caret"></b></a>
+							<ul class="dropdown-menu">
+								<li><a href="#subcriptions"
+									ng-click="jjCtrl.setPanel('subcriptions')">View
+										Subcriptions</a></li>
+								<li><a href="#sjournals"
+									ng-click="jjCtrl.setPanel('sjournals')">View Journals</a></li>
+
+							</ul></li>
+						<li class="dropdown"><a href="#" class="dropdown-toggle"
+							data-toggle="dropdown">Publisher<b class="caret"></b></a>
+							<ul class="dropdown-menu">
+
+								<li><a href="#pjournals"
+									ng-click="jjCtrl.setPanel('pjournals')">View My
+										Publications</a></li>
+								<li><a href="#publish"
+									ng-click="jjCtrl.setPanel('publish')">Publish A Journal</a></li>
+
+
+
+							</ul></li>
+						<li><a data-toggle="modal" href="#AboutModal">About</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+
+
+		<!-- BODY -->
+		<div ng-cloak id="content">
+
+			<div ng-cloak ng-show="jjCtrl.selectedPanel == 'subcriptions'"
+				id="subcriptions" class="panel panel-default hide">
+				<div ng-cloak class="panel-heading">
+					<h1 ng-cloak>Your Subcriped Topics</h1>
+				</div>
+				<!-- /.panel-heading -->
+				<div ng-cloak class="panel-body">
+
+					<div ng-repeat="stopic in jjCtrl.stopics"
+						class="alert alert-success">{{stopic.name}}</div>
+
+				</div>
+				<!-- .panel-body -->
+			</div>
+
+			<div ng-cloak ng-show="jjCtrl.selectedPanel == 'sjournals'"
+				id="sjournals" class="panel panel-default hide">
+				<div class="panel-heading">
+					<h1>Your Subscribed Journals</h1>
+				</div>
+				<!-- /.panel-heading -->
+				<div class="panel-body">
+					<div class="table-responsive">
+						<table class="table">
+							<thead>
+								<tr>
+									<th>#</th>
+									<th>Title</th>
+									<th>Topic</th>
+									<th>file</th>
+									<th>Publisher</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr ng-repeat="sj in jjCtrl.sjournals">
+									<td>{{sj.id}}</td>
+									<td>{{sj.title}}</td>
+									<td>{{sj.topic}}</td>
+									<td>{{sj.file}}</td>
+									<td>{{sj.publisher}}</td>
+								</tr>
+
+							</tbody>
+						</table>
+					</div>
+					<!-- /.table-responsive -->
+				</div>
+				<!-- /.panel-body -->
+			</div>
+
+			<div ng-cloak ng-show="jjCtrl.selectedPanel == 'pjournals'"
+				id="pjournals" class="panel panel-default hide">
+				<div class="panel-heading">
+					<h1>Your Published Journals</h1>
+				</div>
+				<!-- /.panel-heading -->
+				<div class="panel-body">
+					<div class="table-responsive">
+						<table class="table">
+							<thead>
+								<tr>
+									<th>#</th>
+									<th>Title</th>
+									<th>Topic</th>
+									<th>file</th>
+									<th>Publisher</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr ng-repeat="sj in jjCtrl.pjournals">
+									<td>{{sj.id}}</td>
+									<td>{{sj.title}}</td>
+									<td>{{sj.topic}}</td>
+									<td>{{sj.file}}</td>
+									<td>{{sj.publisher}}</td>
+								</tr>
+
+							</tbody>
+						</table>
+					</div>
+					<!-- /.table-responsive -->
+				</div>
+				<!-- /.panel-body -->
+			</div>
+			<div ng-cloak ng-show="jjCtrl.selectedPanel == 'publish'"
+				id="publish" class="panel panel-default hide" data-find="_2">
+				<div class="panel-heading">
+					<h1>Please Upload Your Publication Below:</h1>
+				</div>
+				<!-- /.panel-heading -->
+				<div class="panel-body" data-find="_1">
+					<!-- ng-repeat="stopic in jjcntrl.subcriptions" -->
+					<div class="alert alert-success">
+						<input type="file" file-model="myFile" />
+						<button ng-click="uploadFile()">upload me</button>
+					</div>
+					<div class="alert alert-info">Topic</div>
+					<div class="alert alert-warning">Title</div>
+					<div class="alert alert-danger">Upload</div>
+				</div>
+				<!-- .panel-body -->
+			</div>
+
+
+
+		</div>
+
+
+		<div id="footer">Copyright &copy; Sancho K. George</div>
+	</div>
+
+	</div>
+
+
+
+
+</body>
+<script type="text/javascript">
+	//jjCtrl.checkStatus();
+</script>
+
+</html>
