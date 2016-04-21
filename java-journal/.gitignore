@@ -2,3 +2,7 @@
 /.classpath
 /.project
 /bin/
+/.gradle/
+/test-output/
+/build/
+/java-journal.log.*
