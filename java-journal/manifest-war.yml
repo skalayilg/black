@@ -1,0 +1,7 @@
+---
+applications:
+- name: java-journal-war
+  memory: 512M
+  instances: 1
+  random-route: true
+  path: build/libs/java-journal-war.war
