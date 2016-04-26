@@ -31,15 +31,15 @@ public class JournalRepositoryIT extends RepositoryIT {
     
     @Test
     public void findByUserAndId() {
-        assertEquals(journalRepository.findByUserAndId(userRepository.findByUsername("peter"), 1l).getId(), (Long) 1l);
-        assertNull(journalRepository.findByUserAndId(userRepository.findByUsername("phil"), 1l));
+        assertEquals(journalRepository.findByUserAndId(userRepository.findByUsername("peter"), 1L).getId(), (Long) 1L);
+        assertNull(journalRepository.findByUserAndId(userRepository.findByUsername("phil"), 1L));
     }
     
     @Test
     public void findByTopicSubscribersAndId() {
-        assertEquals(journalRepository.findByTopicSubscribersAndId(userRepository.findByUsername("alex"), 1l).getId(),
-                (Long) 1l);
-        assertNull(journalRepository.findByTopicSubscribersAndId(userRepository.findByUsername("phil"), 1l));
+        assertEquals(journalRepository.findByTopicSubscribersAndId(userRepository.findByUsername("alex"), 1L).getId(),
+                (Long) 1L);
+        assertNull(journalRepository.findByTopicSubscribersAndId(userRepository.findByUsername("phil"), 1L));
     }
     
 }

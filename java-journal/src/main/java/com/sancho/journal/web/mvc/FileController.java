@@ -23,8 +23,7 @@ public class FileController {
     @Autowired
     JournalService journalService;
     
-    @RequestMapping(value = "/published", produces = "application/pdf") // headers = { "Content-disposition",
-                                                                        // "attachment; filename=filename.pdf" }
+    @RequestMapping(value = "/published", produces = "application/pdf")
     @ResponseBody
     public FileSystemResource getPublishedFile(@RequestParam("id") Long id, HttpServletRequest request) {
         String fileName = journalService.getPublishedJournalFile(id, request.getUserPrincipal().getName());
@@ -38,8 +37,7 @@ public class FileController {
         
     }
     
-    @RequestMapping(value = "/subscribed", produces = "application/pdf") // headers = { "Content-disposition",
-    // "attachment; filename=filename.pdf" }
+    @RequestMapping(value = "/subscribed", produces = "application/pdf")
     @ResponseBody
     public FileSystemResource getSubscribedFile(@RequestParam("id") Long id, HttpServletRequest request) {
         String fileName = journalService.getSubscribedJournalFile(id, request.getUserPrincipal().getName());

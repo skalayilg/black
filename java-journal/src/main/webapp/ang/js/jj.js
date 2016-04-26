@@ -39,13 +39,11 @@ function getJson(url){
 	angApp.directive('checkFileSize',function(){
 	    return{
 	    	restrict: 'A',
-	        link: function(scope, elem, attr, ctrl) {
+	        link: function(scope, elem) {
 	            $(elem).bind('change', function() {
-	            	console.log(elem);
 	            	
 	            	if(this.files[0].size > 1048576){
 	            		alert('File size:' + this.files[0].size +"\nPlease Choose a smaller file.");
-	            		
 	            		 scope.$apply(function(){
 	 	                    scope.file='';
 	     	            	$('input[type=file]').val('');
@@ -68,7 +66,6 @@ function getJson(url){
 	        .then(function(resp){
 	        	console.log("publish success");
 	        	console.log(resp);
-	        	//$('form').reset();
 	        	jjCtrl.resetForm();
 	        	
 	        },
@@ -104,7 +101,7 @@ function getJson(url){
 		        var file = $scope.file;
 		        console.log('file is ' );
 		        console.dir(file);
-		        fd = new FormData();
+		        const fd = new FormData();
 		        fd.append('file', $scope.file);
 		        fd.append('fileTopic',$scope.fileTopic);
 		        fd.append('fileTitle',$scope.fileTitle);
@@ -116,17 +113,12 @@ function getJson(url){
             
 		    this.resetForm = function() {
 		    	alert("Jounal submitted successfully");
-		    	console.log($('#publishForm'));
-		    	console.log($('#publishForm')[0]);
 		    	$('#publishForm')[0].reset();
 	        	
 	        	
 		    }
-            this.test = function(){
-                    alert("test func called");
-                }
+        
             this.setPanel = function(p){
-					//alert ("selected filter : " + ftr);
 					this.selectedPanel=p;
 					
 				}
@@ -140,7 +132,7 @@ function getJson(url){
                             console.log("sjournals");
                             console.log(data);
                             console.log(data[0].status);
-                            if(jjCtrl.status.status == 'loggedin'){
+                            if(jjCtrl.status.status === 'loggedin'){
                                 jjCtrl.load();
                             }
                             
@@ -154,7 +146,7 @@ function getJson(url){
                 console.log("status");
                 console.log(jjCtrl.status);
                 console.log(jjCtrl.status.status);
-                if(jjCtrl.status.status == 'loggedin'){
+                if(jjCtrl.status.status === 'loggedin'){
                     jjCtrl.load();
                 }
                 $("#subcriptions").removeClass("hide");
@@ -176,7 +168,6 @@ function getJson(url){
 							});
                             console.log("sjournals");
                             console.log(data);
-                           //console.log(data[0].file);
                         });
                     
                     
@@ -189,7 +180,6 @@ function getJson(url){
 							});
                             console.log("stopics");
                             console.log(jjCtrl.stopics);
-                            //console.log(jjCtrl.stopics[0].name);
                         });
                     
                     $.getJSON( "topic", function( data ) {
@@ -199,7 +189,6 @@ function getJson(url){
 						});
                         console.log("atopics");
                         console.log(jjCtrl.atopics);
-                        //console.log(jjCtrl.stopics[0].name);
                     });
                         
                     this.loadPublished();
@@ -211,7 +200,6 @@ function getJson(url){
 					});
                     console.log("pjournals");
                     console.log(data);
-                   //console.log(data[0].file);
                 });
             }
 
