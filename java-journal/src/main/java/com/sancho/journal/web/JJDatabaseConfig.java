@@ -40,6 +40,13 @@ public class JJDatabaseConfig {
         return new EmbeddedDatabaseBuilder().setType(EmbeddedDatabaseType.H2).build();
     }
     
+    /* @Bean
+     * 
+     * @Profile("notused") public DataSource dataSource() {
+     * 
+     * CloudFactory cloudFactory = new CloudFactory(); Cloud cloud = cloudFactory.getCloud(); String serviceID =
+     * cloud.getServiceID(); return cloud.getServiceConnector(serviceID, DataSource.class, null); } */
+    
     @Bean(name = "dataSource")
     @Profile("embedded")
     public DataSource getDatasourceSimpleEmbedded() {

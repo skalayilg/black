@@ -19,10 +19,10 @@ public class JournalService {
     JournalRepository journalRepository;
     
     @Autowired
-    UserRepository    userRepository;
+    UserRepository userRepository;
     
     @Autowired
-    TopicRepository   topicRepository;
+    TopicRepository topicRepository;
     
     public List<com.sancho.journal.web.vo.Journal> findAllJounals() {
         Iterable<Journal> ji = journalRepository.findAll();// working
@@ -72,6 +72,35 @@ public class JournalService {
             tl.add(vo);
         }
         return tl;
+    }
+    
+    public Long publishJournal(Long topicId, String title, String filename, String username) {
+        Journal je = new Journal();
+        je.setFile(filename);
+        je.setTitle(title);
+        je.setTopic(topicRepository.findOne(topicId));
+        je.setUser(userRepository.findByUsername(username));
+        je = journalRepository.save(je);
+        return je.getId();
+    }
+    
+    public String getPublishedJournalFile(Long id, String username) {
+        Journal j = journalRepository.findByUserAndId(userRepository.findByUsername(username), id);
+        if (j != null) {
+            return j.getFile();
+        } else {
+            return null;
+        }
+    }
+    
+    public String getSubscribedJournalFile(Long id, String username) {
+        
+        Journal j = journalRepository.findByTopicSubscribersAndId(userRepository.findByUsername(username), id);
+        if (j != null) {
+            return j.getFile();
+        } else {
+            return null;
+        }
     }
     
 }

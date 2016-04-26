@@ -6,6 +6,13 @@ function httpGet(theUrl)
 		return xmlHttp.responseText;
 }
 
+function httpPost(theUrl)
+{   var xmlHttp = new XMLHttpRequest();
+		xmlHttp.open( "POST", theUrl, false ); // false for synchronous request
+		xmlHttp.send( null );
+		return xmlHttp.responseText;
+}
+
 function getJson(url){
     return JSON.parse(httpGet(url));
 }
@@ -13,12 +20,71 @@ function getJson(url){
 (function(){
 	var angApp = angular.module('jj',[]);
 	
+	angApp.directive('fileModel', ['$parse', function ($parse) {
+	    return {
+	        restrict: 'A',
+	        link: function(scope, element, attrs) {
+	            var model = $parse(attrs.fileModel);
+	            var modelSetter = model.assign;
+	            
+	            element.bind('change', function(){
+	                scope.$apply(function(){
+	                    modelSetter(scope, element[0].files[0]);
+	                });
+	            });
+	        }
+	    };
+	}]);
+	
+	angApp.directive('checkFileSize',function(){
+	    return{
+	    	restrict: 'A',
+	        link: function(scope, elem, attr, ctrl) {
+	            $(elem).bind('change', function() {
+	            	console.log(elem);
+	            	
+	            	if(this.files[0].size > 1048576){
+	            		alert('File size:' + this.files[0].size +"\nPlease Choose a smaller file.");
+	            		
+	            		 scope.$apply(function(){
+	 	                    scope.file='';
+	     	            	$('input[type=file]').val('');
+	 	                    
+	 	                });
+	            	}
+	          });
+	        }
+	    }
+	});
 
+	
+	
+	angApp.service('publish', ['$http', function ($http) {
+	    this.uploadFileToUrl = function(fd){
+	        $http.post('publish', fd, {
+	            transformRequest: angular.identity,
+	            headers: {'Content-Type': undefined}
+	        })
+	        .then(function(resp){
+	        	console.log("publish success");
+	        	console.log(resp);
+	        	//$('form').reset();
+	        	jjCtrl.resetForm();
+	        	
+	        },
+	        function(resp){
+	        	console.log("publish failed");
+	        	console.log(resp);
+	        })
+	    }
+	}]);
+
+	
     
 	
     
 	//jj controller
-	angApp.controller('jjController',function($scope){
+	angApp.controller('jjController', ['$scope', 'publish', function($scope,publish){
 			jjCtrl = this;
             
             this.status;
@@ -33,8 +99,29 @@ function getJson(url){
             
 			this.selectedPanel="ALL";
 			
+			this.uploadFile = function(){
+				//alert("upload file");
+		        var file = $scope.file;
+		        console.log('file is ' );
+		        console.dir(file);
+		        fd = new FormData();
+		        fd.append('file', $scope.file);
+		        fd.append('fileTopic',$scope.fileTopic);
+		        fd.append('fileTitle',$scope.fileTitle);
+		        
+		        publish.uploadFileToUrl(fd);
+		        console.log("upload triggered");
+		        this.loadPublished();
+		    };
             
-            
+		    this.resetForm = function() {
+		    	alert("Jounal submitted successfully");
+		    	console.log($('#publishForm'));
+		    	console.log($('#publishForm')[0]);
+		    	$('#publishForm')[0].reset();
+	        	
+	        	
+		    }
             this.test = function(){
                     alert("test func called");
                 }
@@ -92,14 +179,7 @@ function getJson(url){
                            //console.log(data[0].file);
                         });
                     
-                    $.getJSON( "journal/published", function( data ) {
-                            $scope.$apply(function(){
-								jjCtrl.pjournals=data;
-							});
-                            console.log("pjournals");
-                            console.log(data);
-                           //console.log(data[0].file);
-                        });
+                    
  
   
                     $.getJSON( "topic/subscribed", function( data ) {
@@ -111,9 +191,29 @@ function getJson(url){
                             console.log(jjCtrl.stopics);
                             //console.log(jjCtrl.stopics[0].name);
                         });
-                        
                     
+                    $.getJSON( "topic", function( data ) {
+                        
+                        $scope.$apply(function(){
+							jjCtrl.atopics=data;
+						});
+                        console.log("atopics");
+                        console.log(jjCtrl.atopics);
+                        //console.log(jjCtrl.stopics[0].name);
+                    });
+                        
+                    this.loadPublished();
                 }
+            this.loadPublished = function (){
+            	$.getJSON( "journal/published", function( data ) {
+                    $scope.$apply(function(){
+						jjCtrl.pjournals=data;
+					});
+                    console.log("pjournals");
+                    console.log(data);
+                   //console.log(data[0].file);
+                });
+            }
 
             this.checkStatusSync();
 			this.print = function(){
@@ -123,7 +223,7 @@ function getJson(url){
 				
 				
 			
-		});
+		}]);
 		
         
 

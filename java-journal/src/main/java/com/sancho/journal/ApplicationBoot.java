@@ -5,18 +5,17 @@ import java.util.Arrays;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 
 @SpringBootApplication
-@EnableAutoConfiguration
+// @EnableAutoConfiguration
 public class ApplicationBoot {
     
     private static final Logger LOGGER = LoggerFactory.getLogger(ApplicationBoot.class);
     
-    private ApplicationBoot() {
-        // making contructor private
+    public ApplicationBoot() {
+        // making contructor public
     }
     
     public static void main(String[] args) {

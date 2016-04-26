@@ -15,4 +15,8 @@ public interface JournalRepository extends CrudRepository<Journal, Long> {
     
     List<Journal> findByTopicSubscribers(User user);
     
+    Journal findByUserAndId(User user, Long id);
+    
+    Journal findByTopicSubscribersAndId(User user, Long id);
+    
 }
