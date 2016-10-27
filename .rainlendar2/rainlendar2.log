@@ -1,0 +1,27 @@
+7 : 28 : 53 AM: Error: can't open file 'E:\allworkspace\gitrepo\.rainlendar2\license.r2lic' (error 2: the system cannot find the file specified.)
+7 : 28 : 54 AM: [0:00:04.290] Category file: E:\allworkspace\gitrepo\.rainlendar2\categories.ini
+7 : 28 : 54 AM: [0:00:04.290] Alarms file: E:\allworkspace\gitrepo\.rainlendar2\alarms.ini
+7 : 28 : 54 AM: [0:00:04.290] Task state file: E:\allworkspace\gitrepo\.rainlendar2\taskstates.ini
+7 : 28 : 54 AM: [0:00:04.383] Reading skin E:\installs\Rainlendar2\skins\Shadow4.r2skin
+7 : 28 : 58 AM: Error: can't open file 'E:\allworkspace\gitrepo\.rainlendar2\license.r2lic' (error 2: the system cannot find the file specified.)
+7 : 28 : 58 AM: [0:00:07.815] Local Time: Ticks: 1461203938 Date: 21-04-2016 Time: 07:28:58 DST: No
+7 : 28 : 58 AM: [0:00:07.831]   UTC Time: Ticks: 1461203938 Date: 21-04-2016 Time: 01:58:58 DST: No
+7 : 28 : 58 AM: [0:00:07.831] Paths:
+7 : 28 : 58 AM: [0:00:07.831] 	Program: E:\installs\Rainlendar2\
+7 : 28 : 58 AM: [0:00:07.831] 	Resources: E:\installs\Rainlendar2\resources\
+7 : 28 : 58 AM: [0:00:07.831] 	Skins (program): E:\installs\Rainlendar2\skins\
+7 : 28 : 58 AM: [0:00:07.831] 	Skins (config): E:\allworkspace\gitrepo\.rainlendar2\skins\
+7 : 28 : 58 AM: [0:00:07.831] 	Plugins: E:\installs\Rainlendar2\plugins\
+7 : 28 : 58 AM: [0:00:07.831] 	Locale (program): E:\installs\Rainlendar2\locale\
+7 : 28 : 58 AM: [0:00:07.831] 	Locale (config): E:\allworkspace\gitrepo\.rainlendar2\locale\
+7 : 28 : 58 AM: [0:00:07.831] 	Scripts (program): E:\installs\Rainlendar2\scripts\
+7 : 28 : 58 AM: [0:00:07.831] 	Scripts (config): E:\allworkspace\gitrepo\.rainlendar2\scripts\
+7 : 28 : 58 AM: [0:00:07.831] 	Backup: E:\allworkspace\gitrepo\.rainlendar2\backups\
+7 : 28 : 58 AM: [0:00:07.831] 	Config: E:\allworkspace\gitrepo\.rainlendar2\rainlendar2.ini
+7 : 28 : 58 AM: [0:00:07.831] Available plugins:
+7 : 28 : 58 AM: [0:00:07.831] 	iCalendar Format (1.12.138)
+7 : 28 : 58 AM: [0:00:07.831] 	Rainlendar Ini Format (1.3.138)
+7 : 28 : 58 AM: [0:00:07.831] WARNING: Default: The file "E:\allworkspace\gitrepo\.rainlendar2\Default.ics" does not exist.
+7 : 29 : 02 AM: Error: can't open file 'E:\allworkspace\gitrepo\.rainlendar2\Default.ics' (error 2: the system cannot find the file specified.)
+7 : 29 : 02 AM: [0:00:12.542] WARNING: Unable to open file: E:\allworkspace\gitrepo\.rainlendar2\Default.ics
+7 : 29 : 02 AM: [0:00:12.542] Created backup file "E:\allworkspace\gitrepo\.rainlendar2\backups\20160421-Rainlendar2Backup.zip"
